@@ -22,16 +22,16 @@ Paragraph default: 1.6
 
 --- 02 COLORS
 
-- Primary: #e67e22
+- Primary: #1c7ed6
 #ffbc0d
 - Tints:
-#fdf2e9
-#fae5d3
-#eb984e
+#d0ebff
+#a5d8ff
+#74c0fc
 
 - Shades: 
-#cf711f
-#45260a
+#1864ab
+#1971c2
 
 - Accents:
 - Greys
@@ -93,21 +93,65 @@ body {
 .nav_logo a:link,
 .nav_logo a:visited {
   display: inline-block;
-  font-size: 3.6rem;
-  font-weight: 500;
-  color: #333;
   text-decoration: none;
 }
 
 .nav_logo_img {
-  width: 6rem;
+  width: 3.5rem;
   align-self: center;
-  margin: 0;
+  /* margin-top: 1.8rem; */
+}
+.nav_logo_text {
+  color: #1c7ed6;
+  font-weight: 500;
+  font-size: 3rem;
+}
+
+.login_btn a:link,
+.login_btn a:visited {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #e9ecef;
+  padding: 1rem 2rem;
+  border-radius: 9px;
+  background-image: linear-gradient(to right, #1c7ed6 50%, #e9ecef 50%);
+  background-size: 200% 100%;
+  background-position: right;
+  transition: all 0.3s ease;
+}
+
+.login_btn a:hover,
+.login_btn a:active {
+  background-position: left;
+  color: #e7f5ff;
+}
+.login_btn a:active {
+  transform: scale(1.03);
+}
+
+.btn {
+  color: #444;
+  font-size: 1.8rem;
+  font-weight: 500;
 }
 
 .nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 5rem;
+  /* margin: 0 8rem; */
+  height: 8rem;
+}
+.header {
+  border-top: 2px solid #dee2e6;
+}
+
+.header_img {
+  width: 55rem;
+  height: 55rem;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
