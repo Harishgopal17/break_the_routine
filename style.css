@@ -80,7 +80,39 @@ body {
   max-width: 120rem;
   margin: auto;
 }
+/* GENERAL ELEMENTS */
+.section {
+  padding: 10rem 3rem;
 
+  transition: transform 1s, opacity 1s;
+}
+
+.section--hidden {
+  opacity: 0;
+  transform: translateY(8rem);
+}
+
+.section__title {
+  max-width: 80rem;
+  margin: 0 auto 8rem auto;
+}
+
+.section__description {
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #1c7ed6;
+  margin-bottom: 1rem;
+}
+
+.section__header {
+  font-size: 3.8rem;
+  line-height: 1.3;
+  font-weight: 500;
+}
+/*********************************/
+/* Hero section */
+/*********************************/
 .nav_logo {
   display: flex;
   align-items: center;
@@ -107,11 +139,17 @@ body {
   font-size: 3rem;
 }
 
-.login_btn a:link,
-.login_btn a:visited {
+.btn {
+  font-size: 1.8rem;
+  font-weight: 500;
   display: inline-block;
   text-decoration: none;
+}
+
+.login_btn a:link,
+.login_btn a:visited {
   background-color: #e9ecef;
+  color: #444;
   padding: 1rem 2rem;
   border-radius: 9px;
   background-image: linear-gradient(to right, #1c7ed6 50%, #e9ecef 50%);
@@ -129,29 +167,115 @@ body {
   transform: scale(1.03);
 }
 
-.btn {
-  color: #444;
-  font-size: 1.8rem;
-  font-weight: 500;
-}
-
 .nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* margin: 0 8rem; */
+  margin: 0 8rem;
   height: 8rem;
 }
 .header {
   border-top: 2px solid #dee2e6;
-}
-
-.header_img {
-  width: 55rem;
-  height: 55rem;
-}
-
-.header {
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+
+.header_text {
+  color: #444;
+  font-size: 3.3rem;
+  line-height: 1.3;
+  /* letter-spacing: 0.6px; */
+  word-spacing: 0.6px;
+  align-self: center;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  margin-left: 7rem;
+}
+
+.highlight {
+  position: relative;
+}
+
+.highlight::after {
+  display: block;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: 0.7;
+  transform: scale(1.07, 1.05) skewX(-15deg);
+
+  background-image: linear-gradient(to top left, #1971c2, #a5d8ff);
+  transition: all 0.3s ease;
+}
+
+.highlight::after {
+  transform: scale(1.07, 1.05) skewX(-15deg);
+}
+.learnmore_btn a:link,
+.learnmore_btn a:visited {
+  color: #1c7ed6;
+  padding-bottom: 0.5px;
+  border-bottom: 1px solid #1c7ed6;
+  transition: all 0.3s ease;
+}
+
+.learnmore_btn a:hover,
+.learnmore_btn a:active {
+  border-bottom: 1px solid transparent;
+}
+.header_img {
+  width: 50rem;
+  height: 50rem;
+  align-self: center;
+  justify-self: center;
+}
+
+header {
+  /* margin-bottom: 11.2rem; */
+  height: 100vh;
+}
+/*********************************/
+/*section 1*/
+/*********************************/
+.section_container {
+  max-width: 100rem;
+  margin: auto;
+}
+
+.section1 {
+  display: flex;
+  flex-direction: column;
+  gap: 2.8rem;
+}
+.paragraph {
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+
+/*********************************/
+/*How breaking your routine can help you*/
+/*********************************/
+.section_heading {
+  font-size: 1.8rem;
+  font-weight: 600;
+  /* color: #1c7ed6; */
+  margin-bottom: 1rem;
+}
+
+.section_para {
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.9;
+}
+
+.section_content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.8rem;
 }

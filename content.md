@@ -23,7 +23,7 @@
 
 ### Plain information on how planing a day is important
 
-- Most of us understand the value of planning and preparation. A sports match without a game plan means fumbling on the field. A big event without all the details in place leads to chaos
+- Most of us understand the value of planning and preparation. A sports match without a game plan means fumbling on the field. A big event without all the details in place leads to chaos.
 
 - James Clear, the best-selling author of Atomic Habits, thinks motivation is overrated: “Stop waiting for motivation or inspiration to strike you and set a schedule for your habits”. Motivation flows from action, not the other way around.
 
@@ -55,10 +55,5 @@
 - Your Feedback Matters:
   After trying out an activity, don't forget to let us know what you think! Your feedback helps us improve our suggestions and make them even more personalized for you and others.
 
-- Seamless Integration:
-  Want to schedule a suggested activity? No problem! Our integration with calendar apps makes it easy to plan your day and set reminders for upcoming adventures.
-
-- Always Evolving:
-  We're constantly updating our database and refining our algorithms to provide you with the best possible experience. So, every time you visit, you'll discover new and exciting activities to try.
-
 Ready to break the routine? Let's get started!
+https://www.themealdb.com/api.php
