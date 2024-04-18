@@ -43,11 +43,10 @@
 
 ### How it works
 
-- Tell Us Your Preferences:
-  Start by telling us a bit about your preferences and interests. Do you prefer indoor or outdoor activities? Are you looking for something creative, physical, or relaxing? Let us know, and we'll tailor our suggestions just for you.
+Random Revelry: Delve into Spontaneous Activities
 
-- Personalized Suggestions:
-  Using your preferences as a guide, we sift through the random data to find activities that match your interests. Whether it's painting, hiking, or learning a new skill, we've got something special waiting for you.
+- Random Suggestions:
+  we sift through the random data to find activities that gives you a new experience. Whether it's painting, hiking, or learning a new skill, we've got something special waiting for you.
 
 - Spontaneous Surprises:
   Our Random Activity Generator selects the best suggestions and presents them to you in a fun and engaging format. Each suggestion comes with a brief description, so you'll know exactly what to expect.
@@ -56,4 +55,43 @@
   After trying out an activity, don't forget to let us know what you think! Your feedback helps us improve our suggestions and make them even more personalized for you and others.
 
 Ready to break the routine? Let's get started!
+
+### Working with APIs
+
+<!------------------------------>
+<!-- API -->
+
 https://www.themealdb.com/api.php
+
+<!------------------------------>
+
+#### Bored API
+
+- Get random activity
+  http://www.boredapi.com/api/activity/
+
+- Get activities by participants
+  http://www.boredapi.com/api/activity?participants=1
+
+  Activity to fight off your monotonous lifestyle
+
+  - Sample output
+    {
+    accessibility: 0.1;
+    activity: 'Practice coding in your favorite lanaguage';
+    key: '7096020';
+    link: '';
+    participants: 1;
+    price: 0;
+    type: 'recreational';
+    }
+
+#### Useless facts
+
+- Get fun facts
+  https://uselessfacts.jsph.pl/api/v2/facts/random
+
+#### Quote of the day
+
+- Get some advice quotes
+  https://api.adviceslip.com/advice
