@@ -239,6 +239,7 @@ body {
 header {
   /* margin-bottom: 11.2rem; */
   height: 100vh;
+  border-bottom: 2px solid #dee2e6;
 }
 /*********************************/
 /*section 1*/
