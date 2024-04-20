@@ -133,6 +133,10 @@ body {
   font-weight: 400;
   line-height: 1.9;
 }
+
+.hidden {
+  display: none;
+}
 /*********************************/
 /* Hero section */
 /*********************************/
@@ -326,6 +330,7 @@ header {
 .food_flex {
   display: flex;
   justify-content: center;
+  gap: 1.2rem;
 }
 .food_image {
   height: 15rem;
@@ -337,6 +342,14 @@ header {
   font-size: 1.8rem;
   font-weight: 400;
   align-self: flex-end;
+  justify-self: center;
+}
+
+.show_recipe {
+  font-size: 1.4rem;
+  font-weight: 400;
+  align-self: flex-end;
+  justify-self: center;
 }
 
 .food_recipe {
