@@ -381,3 +381,39 @@ header {
   align-self: center;
   font-style: italic;
 }
+
+/* ****************************** */
+/* How it works */
+/* ****************************** */
+.how_it_works_section {
+  position: relative;
+}
+.how_it_works_content_div {
+  position: absolute;
+  top: 0;
+  right: 8%;
+  background-color: #fff;
+  margin: 3rem 0;
+  z-index: 1;
+}
+
+.how_it_works_content {
+  width: 80rem;
+  background-color: #fff;
+  top: 50%;
+}
+
+.how_it_works_img {
+  background-image: url(img/u_got_this_img.jpg);
+  background-size: cover;
+  background-position: 0 40%;
+  position: relative;
+  left: 8%;
+  width: 40rem;
+  height: 40rem;
+}
+
+.how_it_works_section__description {
+  color: #ced4da;
+  font-size: 1.6rem;
+}
