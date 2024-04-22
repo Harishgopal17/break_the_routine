@@ -387,6 +387,7 @@ header {
 /* ****************************** */
 .how_it_works_section {
   position: relative;
+  margin-bottom: 10rem;
 }
 .how_it_works_content_div {
   position: absolute;
@@ -401,6 +402,9 @@ header {
   width: 80rem;
   background-color: #fff;
   top: 50%;
+  display: grid;
+  grid-template-columns: 1fr 16rem;
+  grid-template-rows: 10rem 1fr;
 }
 
 .how_it_works_img {
@@ -410,10 +414,37 @@ header {
   position: relative;
   left: 8%;
   width: 40rem;
-  height: 40rem;
+  height: 35rem;
 }
 
 .how_it_works_section__description {
-  color: #ced4da;
+  color: #495057;
   font-size: 1.6rem;
+  font-weight: 400;
+}
+.how_it_works_section__header {
+  color: #343a40;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.how_it_works_section__title {
+  padding: 2rem;
+}
+
+.how_it_works_section_para {
+  color: #888;
+  font-size: 1.6rem;
+  font-weight: 400;
+  grid-row: 2;
+  padding: 2rem;
+}
+.how_it_works_svg_section {
+  grid-row: 1 / span 2;
+  align-self: center;
+}
+
+.how_it_works_svg {
+  width: 15rem;
+  height: 15rem;
 }
