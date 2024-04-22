@@ -56,6 +56,8 @@ Random Revelry: Delve into Spontaneous Activities
 
 Ready to break the routine? Let's get started!
 
+Join millions of others who mix things up and add some excitement to their days with new adventures.
+
 ### Working with APIs
 
 <!------------------------------>

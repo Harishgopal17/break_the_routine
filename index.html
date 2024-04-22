@@ -128,12 +128,12 @@
         </div>
       </div>
     </section>
-    <section class="container how_it_works_section">
+    <section class="section container how_it_works_section">
       <div class="how_it_works_content_div">
         <div class="how_it_works_content">
-          <div class="how_it_works_section__title">
-            <p class="how_it_works_section__description">How it works</p>
-            <h3 class="how_it_works_section__header">
+          <div class="how_it_works_section_title">
+            <p class="how_it_works_section_description">How it works</p>
+            <h3 class="how_it_works_section_header">
               Delve into Random Activities
             </h3>
           </div>
@@ -150,51 +150,64 @@
               expect.
             </p>
           </div>
-          <div class="how_it_works_svg_section">
+          <div class="how_it_works_svg_div">
             <img
               src="svg/mechanism.svg"
               class="how_it_works_svg"
-              alt="Hand breaking the chain"
+              alt="Mechanism"
             />
           </div>
         </div>
       </div>
       <div class="how_it_works_img"></div>
     </section>
-    <!-- ----------------------------------- -->
-    <!-- <section class="section section_container">
-      <div class="section__title">
-        <h2 class="section__description">How it works</h2>
-        <h3 class="section__header">Delve into Random Activities</h3>
-      </div>
-      <div class="section_content">
-        <div>
-          <h4 class="section_heading">Random Suggestions</h4>
-          <p class="section_para">
-            We sift through the random data to find activities that give you a
-            new experience. Whether it's painting, hiking, or learning a new
-            skill, we've got something special waiting for you.
+    <section class="section_container activity_generator_section">
+      <div class="activity_generator_container">
+        <div class="activity_generator_svg_div">
+          <img
+            src="svg/start_activity.svg"
+            class="activity_generator_svg"
+            alt="Mechanism"
+          />
+        </div>
+        <div class="activity_generator_section_content">
+          <p class="activity_generator_section_description">Try it out</p>
+          <h5 class="activity_generator_section_header">
+            Ready to break the routine?
+          </h5>
+          <p class="activity_generator_section_text">
+            Discover new experiences and break the routine with a day of
+            adventure!
           </p>
-        </div>
-        <div>
-          <h4 class="section_heading">Spontaneous Surprises</h4>
-          <p class="section_para">
-            Our Random Activity Generator selects the best suggestions and
-            presents them to you in a fun and engaging format. Each suggestion
-            comes with a brief description, so you'll know exactly what to
-            expect.
-          </p>
-        </div>
-        <div>
-          <p class="section_para">Ready to break the routine?</p>
-        </div>
-        <div class="get_start_btn">
-          <button class="activity_btn">Let's get started</button>
+          <div>
+            <button class="activity_btn">Let's get start</button>
+          </div>
         </div>
       </div>
-    </section> -->
-    <!-- --------------------------------------------- -->
-    <!-- <section class="section section_container hidde">
+    </section>
+    <footer>
+      <div class="footer_div">
+        <div class="nav_logo">
+          <a href="#">
+            <img
+              src="logo/planaday_logo.png"
+              alt="planaday_logo"
+              class="nav_logo_img"
+          /></a>
+          <a href="#"><p class="nav_logo_text">Plan&nbsp;a&nbsp;Day</p> </a>
+        </div>
+        <div class="footer_text_div">
+          <p class="footer_text">
+            Join millions of people who mix things up and add some excitement to
+            their days with new adventures.
+          </p>
+        </div>
+      </div>
+      <!-- <div class="copyright_div">&copy; copyright by Plan a Day</div> -->
+      <div class="copyright_div">Designed and Developed by Harish with ❣️</div>
+    </footer>
+    <div class="modal visibility_hidden">
+      <button class="btn--close-modal">&times;</button>
       <div class="activity_container">
         <div class="activity">
           <h4 class="activity_heading">
@@ -218,25 +231,6 @@
             />
             <p class="food_name">Chocolate Souffle</p>
           </div>
-          <p class="food_recipe hidden">
-            Heat oven to 220C/fan 200C/gas 7 and place a baking tray on the top
-            shelf. For the sauce, heat the cream and sugar until boiling. Remove
-            from the heat, stir in the chocolate and butter until melted, then
-            keep warm. Brush 6 x 150ml ramekins with melted butter, sprinkle
-            with the 2 tbsp caster sugar, then tip out any excess. Melt the
-            chocolate and cream in a bowl over a pan of simmering water, cool,
-            then mix in the egg yolks. Whisk the egg whites until they hold
-            their shape, then add the sugar, 1 tbsp at a time, whisking back to
-            the same consistency. Mix a spoonful into the chocolate, then gently
-            fold in the rest. Working quickly, fill the ramekins, wipe the rims
-            clean and run your thumb around the edges. Turn oven down to
-            200C/fan 180C/gas 6, place the ramekins onto the baking tray, then
-            bake for 8-10 mins until risen with a slight wobble. Don’t open the
-            oven door too early as this may make them collapse. Once the
-            soufflés are ready, dust with icing sugar, scoop a small hole from
-            their tops, then pour in some of the hot chocolate sauce. Replace
-            the lids and serve straight away.
-          </p>
         </div>
         <div class="qoute">
           <h4 class="activity_heading">
@@ -257,6 +251,7 @@
           </p>
         </div>
       </div>
-    </section> -->
+    </div>
+    <div class="overlay visibility_hidden"></div>
   </body>
 </html>
