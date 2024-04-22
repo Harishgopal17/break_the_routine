@@ -66,6 +66,8 @@ Medium: 11px
 html {
   font-size: 62.5%;
   box-sizing: border-box;
+
+  scroll-behavior: smooth;
 }
 
 body {
@@ -265,10 +267,6 @@ header {
   /* margin-bottom: 11.2rem; */
   height: 100vh;
   border-bottom: 2px solid #dee2e6;
-}
-
-.get_start_btn {
-  align-self: center;
 }
 
 /* ****************************** */
