@@ -137,7 +137,33 @@ body {
 }
 
 .hidden {
-  display: none;
+  opacity: 0;
+}
+
+.animation1 {
+  animation: expandWidth 2s ease forwards;
+}
+
+@keyframes expandWidth {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.animation2 {
+  animation: blockReveal 2s 0.5s cubic-bezier(0.19, 1, 0.22, 1) both;
+}
+
+@keyframes blockReveal {
+  0% {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
 }
 /*********************************/
 /* Hero section */
@@ -295,7 +321,7 @@ header {
 }
 
 .how_it_works_img {
-  background-image: url(img/u_got_this_img.jpg);
+  /* background-image: url(img/u_got_this_img.jpg); */
   background-size: cover;
   background-position: 0 40%;
   position: relative;
@@ -347,6 +373,17 @@ header {
 .activity_generator_section {
   padding: 14rem 0 8rem 0;
 }
+
+/* .activity_generator_section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: red;
+} */
+
 .activity_generator_container {
   background-image: linear-gradient(to left, #1864ab, #91a7ff);
   width: 100%;
@@ -415,7 +452,7 @@ footer {
   padding: 5rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 4rem;
 }
 .footer_text {
   font-size: 1.6rem;
