@@ -120,17 +120,95 @@ activity_generator_observer.observe(activity_generator);
 
 async function BoredAPi() {
   try {
-    // const randomActivity = await fetch(
-    //   `https://www.boredapi.com/api/activity?type=recreational`
-    // );
     const randomActivity = await fetch(
       `https://www.boredapi.com/api/activity/`
     );
     const data = await randomActivity.json();
     console.log(data);
+    activity_content.innerHTML = data.activity;
   } catch (err) {
     console.error(err);
   }
 }
 
-BoredAPi();
+// BoredAPi();
+
+async function randomfoods() {
+  try {
+    const randomActivity = await fetch(
+      `https://www.themealdb.com/api/json/v1/1/random.php`
+    );
+    const data = await randomActivity.json();
+    console.log(data.meals[0]);
+    console.log(data.meals[0].strMeal);
+    food_image.src = data.meals[0].strMealThumb;
+    food_name.innerHTML = data.meals[0].strMeal;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+// randomfoods();
+
+async function advice() {
+  try {
+    const randomActivity = await fetch(`https://api.adviceslip.com/advice`);
+    const data = await randomActivity.json();
+    console.log(data.slip);
+    quote_content.innerHTML = data.slip.advice;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+// advice();
+
+async function UselessFacts() {
+  try {
+    const randomActivity = await fetch(
+      `https://uselessfacts.jsph.pl/api/v2/facts/random`
+    );
+    const data = await randomActivity.json();
+    console.log(data);
+    fact_content.innerHTML = data.text;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+// UselessFacts();
+
+async function getJSON(url) {
+  try {
+    const res = await fetch(url);
+    return await res.json();
+  } catch {
+    renderError("Something went wrong");
+  }
+}
+
+async function getData() {
+  try {
+    const data = await Promise.all([
+      getJSON(`https://www.boredapi.com/api/activity/`),
+      getJSON(`https://www.themealdb.com/api/json/v1/1/random.php`),
+      getJSON(`https://api.adviceslip.com/advice`),
+      getJSON(`https://uselessfacts.jsph.pl/api/v2/facts/random`),
+    ]);
+    // console.log(data);
+    // console.log(data[0].activity);
+    // console.log(data[1].meals[0].strMealThumb);
+    // console.log(data[1].meals[0].strMeal);
+    // console.log(data[2].slip.advice);
+    // console.log(data[3].text);
+    activity_content.innerHTML = data[0].activity;
+    food_image.src = data[1].meals[0].strMealThumb;
+    food_name.innerHTML = data[1].meals[0].strMeal;
+    quote_content.innerHTML = data[2].slip.advice;
+    fact_content.innerHTML = data[3].text;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+getData();
