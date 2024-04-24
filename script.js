@@ -164,7 +164,8 @@ function hideloading() {
 ////API
 ///////////////////////////////
 
-let html = `<div class="error_div">
+/*
+let errorHTML = `<div class="error_div">
 <h4 class="error_msg">Oops! something went wrong</h4>
 <img src="svg/Error.svg" class="error_svg" alt="Error message" />
 <h4 class="error_msg">Try again after some time</h4>
@@ -178,7 +179,7 @@ async function getJSON(url) {
     console.log(err);
     activity_container.innerHTML = "";
     OpenCloseModal();
-    activity_container.insertAdjacentHTML("afterbegin", html);
+    activity_container.insertAdjacentHTML("afterbegin", errorHTML);
   }
 }
 
@@ -213,9 +214,90 @@ async function getData() {
     hideloading();
     activity_container.innerHTML = "";
     OpenCloseModal();
-    activity_container.insertAdjacentHTML("afterbegin", html);
+    activity_container.insertAdjacentHTML("afterbegin", errorHTML);
   }
 }
 btn.addEventListener("click", function () {
   getData();
 });
+*/
+//////////////////////////////////////////////////
+
+const errorHTML = `<div class="error_div">
+    <h4 class="error_msg">Oops! something went wrong</h4>
+    <img src="svg/Error.svg" class="error_svg" alt="Error message" />
+    <h4 class="error_msg">Try again after some time</h4>
+  </div>`;
+
+const timeoutHTML = `<div class="error_div">
+    <h4 class="error_msg">Oops! Request took too long</h4>
+    <img src="svg/Timeout_error.svg" class="error_svg" alt="Error message" />
+    <h4 class="error_msg">Try again after some time</h4>
+  </div>`;
+
+function timeout(sec) {
+  return new Promise(function (resolve) {
+    setTimeout(() => {
+      resolve("timeout");
+    }, sec * 1000);
+  });
+}
+
+async function getJSON(url) {
+  try {
+    const res = await fetch(url);
+    return await res.json();
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch data");
+  }
+}
+
+async function getResult() {
+  try {
+    return await Promise.all([
+      getJSON(`https://www.boredapi.com/api/activity/`),
+      getJSON(`https://www.themealdb.com/api/json/v1/1/random.php`),
+      getJSON(`https://api.adviceslip.com/advice`),
+      getJSON(`https://uselessfacts.jsph.pl/api/v2/facts/random`),
+    ]);
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch results");
+  }
+}
+
+async function getData() {
+  showloading();
+  try {
+    const result = await Promise.race([getResult(), timeout(4)]);
+
+    if (result === "timeout") {
+      console.log("Request timed out");
+      hideloading();
+      OpenCloseModal();
+      activity_container.innerHTML = "";
+      activity_container.insertAdjacentHTML("afterbegin", timeoutHTML);
+    } else {
+      activity_content.innerHTML = result[0].activity;
+      const img = new Image();
+      img.src = result[1].meals[0].strMealThumb;
+      quote_content.innerHTML = result[2].slip.advice;
+      fact_content.innerHTML = result[3].text;
+      img.onload = function () {
+        food_image.src = img.src;
+        food_name.innerHTML = result[1].meals[0].strMeal;
+        hideloading();
+        OpenCloseModal();
+      };
+    }
+  } catch (err) {
+    console.log(err);
+    hideloading();
+    OpenCloseModal();
+    activity_container.innerHTML = "";
+    activity_container.insertAdjacentHTML("afterbegin", errorHTML);
+  }
+}
+
+btn.addEventListener("click", getData);
