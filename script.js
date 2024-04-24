@@ -25,8 +25,8 @@ const loading = document.querySelector(".loading_div");
 ///////////////////////////////
 ////Modal window
 ///////////////////////////////
-// modal.classList.remove("visibility_hidden");
-// overlay.classList.remove("visibility_hidden");
+modal.classList.remove("visibility_hidden");
+overlay.classList.remove("visibility_hidden");
 function OpenCloseModal() {
   modal.classList.toggle("visibility_hidden");
   overlay.classList.toggle("visibility_hidden");
