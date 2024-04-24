@@ -167,7 +167,7 @@ function hideloading() {
 let html = `<div class="error_div">
 <h4 class="error_msg">Oops! something went wrong</h4>
 <img src="svg/Error.svg" class="error_svg" alt="Error message" />
-<h4 class="error_msg">Try agani after some time</h4>
+<h4 class="error_msg">Try again after some time</h4>
 </div>`;
 
 async function getJSON(url) {
