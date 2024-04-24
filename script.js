@@ -5,7 +5,7 @@ const overlay = document.querySelector(".overlay");
 const btn_scroll = document.querySelector(".btn_scroll_to");
 const section1 = document.querySelector(".section1");
 const header = document.querySelector(".header");
-const logo = document.querySelector(".nav_logo");
+const logos = document.querySelectorAll(".nav_logo");
 const routine_break = document.querySelector(".routine_break_section");
 const how_it_works = document.querySelector(".how_it_works_section");
 const activity_generator = document.querySelector(
@@ -17,20 +17,18 @@ const food_image = document.querySelector(".food_image");
 const food_name = document.querySelector(".food_name");
 const quote_content = document.querySelector(".quote_content");
 const fact_content = document.querySelector(".fact_content");
+const to_top = document.querySelector(".to_top");
+const loading = document.querySelector(".loading_div");
 
 ///////////////////////////////
 ////Modal window
 ///////////////////////////////
-modal.classList.remove("visibility_hidden");
-overlay.classList.remove("visibility_hidden");
+// modal.classList.remove("visibility_hidden");
+// overlay.classList.remove("visibility_hidden");
 function OpenCloseModal() {
   modal.classList.toggle("visibility_hidden");
   overlay.classList.toggle("visibility_hidden");
 }
-
-btn.addEventListener("click", function () {
-  OpenCloseModal();
-});
 
 btn_close.addEventListener("click", function () {
   OpenCloseModal();
@@ -46,10 +44,6 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
-btn_scroll.addEventListener("click", function () {
-  section1.scrollIntoView({ behavior: "smooth" });
-});
-
 ///////////////////////////////
 ////Image load
 ///////////////////////////////
@@ -61,7 +55,6 @@ bgImg.src = "/img/u_got_this_img.jpg";
 bgImg.onload = function () {
   document.querySelector(".how_it_works_img").style.backgroundImage =
     'url("' + bgImg.src.replace("\\", "\\\\").replace('"', '\\"') + '")';
-  console.log("image loaded");
 };
 
 ///////////////////////////////
@@ -115,68 +108,59 @@ const activity_generator_observer = new IntersectionObserver(
 activity_generator_observer.observe(activity_generator);
 
 ///////////////////////////////
-////API
+////Move to Section
 ///////////////////////////////
 
-async function BoredAPi() {
-  try {
-    const randomActivity = await fetch(
-      `https://www.boredapi.com/api/activity/`
-    );
-    const data = await randomActivity.json();
-    console.log(data);
-    activity_content.innerHTML = data.activity;
-  } catch (err) {
-    console.error(err);
+btn_scroll.addEventListener("click", function () {
+  section1.scrollIntoView({ behavior: "smooth" });
+});
+
+let calcScrollValue = () => {
+  let pos = window.scrollY;
+  let calcHeight = document.documentElement.scrollHeight - window.innerHeight;
+  let percntVal = Math.round((pos / calcHeight) * 100);
+
+  to_top.style.background = `conic-gradient(#1864ab ${percntVal}%, #d0ebff ${percntVal}%)`;
+};
+
+window.addEventListener("scroll", () => {
+  calcScrollValue();
+  if (window.scrollY > 150) {
+    to_top.classList.add("active");
+  } else {
+    to_top.classList.remove("active");
   }
+});
+
+to_top.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+});
+
+logos.forEach((logo) =>
+  logo.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  })
+);
+
+function showloading() {
+  loading.classList.toggle("loading");
+  overlay.classList.toggle("visibility_hidden");
 }
 
-// BoredAPi();
-
-async function randomfoods() {
-  try {
-    const randomActivity = await fetch(
-      `https://www.themealdb.com/api/json/v1/1/random.php`
-    );
-    const data = await randomActivity.json();
-    console.log(data.meals[0]);
-    console.log(data.meals[0].strMeal);
-    food_image.src = data.meals[0].strMealThumb;
-    food_name.innerHTML = data.meals[0].strMeal;
-  } catch (err) {
-    console.log(err);
-  }
+function hideloading() {
+  loading.classList.toggle("loading");
+  overlay.classList.toggle("visibility_hidden");
 }
 
-// randomfoods();
-
-async function advice() {
-  try {
-    const randomActivity = await fetch(`https://api.adviceslip.com/advice`);
-    const data = await randomActivity.json();
-    console.log(data.slip);
-    quote_content.innerHTML = data.slip.advice;
-  } catch (err) {
-    console.error(err);
-  }
-}
-
-// advice();
-
-async function UselessFacts() {
-  try {
-    const randomActivity = await fetch(
-      `https://uselessfacts.jsph.pl/api/v2/facts/random`
-    );
-    const data = await randomActivity.json();
-    console.log(data);
-    fact_content.innerHTML = data.text;
-  } catch (err) {
-    console.error(err);
-  }
-}
-
-// UselessFacts();
+///////////////////////////////
+////API
+///////////////////////////////
 
 async function getJSON(url) {
   try {
@@ -188,13 +172,16 @@ async function getJSON(url) {
 }
 
 async function getData() {
+  showloading();
   try {
     const data = await Promise.all([
       getJSON(`https://www.boredapi.com/api/activity/`),
       getJSON(`https://www.themealdb.com/api/json/v1/1/random.php`),
       getJSON(`https://api.adviceslip.com/advice`),
-      getJSON(`https://uselessfacts.jsph.pl/api/v2/facts/random`),
+      getJSON(`https://uselessfacts.jsph.pl/api/v2/facts/today`),
     ]);
+    hideloading();
+    OpenCloseModal();
     // console.log(data);
     // console.log(data[0].activity);
     // console.log(data[1].meals[0].strMealThumb);
@@ -211,4 +198,6 @@ async function getData() {
   }
 }
 
-getData();
+btn.addEventListener("click", function () {
+  getData();
+});

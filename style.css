@@ -175,13 +175,14 @@ body {
   gap: 0.1rem;
   width: 25rem;
   margin-left: 1rem;
+  cursor: pointer;
 }
 
-.nav_logo a:link,
+/* .nav_logo a:link,
 .nav_logo a:visited {
   display: inline-block;
   text-decoration: none;
-}
+} */
 
 .nav_logo_img {
   width: 3.5rem;
@@ -506,6 +507,7 @@ footer {
   border: none;
   background: none;
 }
+
 .activity_container {
   display: flex;
   flex-direction: column;
@@ -518,6 +520,7 @@ footer {
   flex-direction: column;
   gap: 1.5rem;
 }
+
 .activity_heading {
   color: #444;
   font-size: 2rem;
@@ -531,16 +534,19 @@ footer {
   font-style: oblique;
   align-self: center;
 }
+
 .food {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
+
 .food_flex {
   display: flex;
   justify-content: center;
   gap: 1.2rem;
 }
+
 .food_image {
   height: 15rem;
   width: 15rem;
@@ -550,6 +556,7 @@ footer {
 .food_name {
   font-size: 1.8rem;
   font-weight: 400;
+  font-style: italic;
   align-self: flex-end;
   justify-self: center;
 }
@@ -566,17 +573,20 @@ footer {
   flex-direction: column;
   gap: 1.5rem;
 }
+
 .quote_content {
   font-size: 1.6rem;
   font-weight: 500;
   font-style: italic;
   align-self: center;
 }
+
 .useless_fact {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
+
 .fact_content {
   font-size: 1.6rem;
   font-weight: 500;
@@ -587,4 +597,63 @@ footer {
 .visibility_hidden {
   visibility: hidden;
   opacity: 0;
+}
+
+/*********************************/
+/* Scroll to top */
+/*********************************/
+
+.to_top {
+  background-color: #ffffff;
+  position: fixed;
+  bottom: 1.6rem;
+  right: 3.2rem;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.4s;
+  pointer-events: none;
+  z-index: 1;
+  .inner {
+    width: 80%;
+    height: 80%;
+    background-color: #1f1f1f;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    pointer-events: none;
+  }
+}
+
+.to_top.active {
+  opacity: 1;
+  bottom: 3.2rem;
+  pointer-events: visible;
+}
+.to_top_svg {
+  fill: #fff;
+}
+
+/*********************************/
+/* loading */
+/*********************************/
+
+.loading_div {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+  opacity: 0;
+}
+
+.loading_div.loading {
+  opacity: 1;
 }
