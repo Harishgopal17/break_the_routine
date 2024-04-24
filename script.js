@@ -125,7 +125,7 @@ let calcScrollValue = () => {
 
 window.addEventListener("scroll", () => {
   calcScrollValue();
-  if (window.scrollY > 150) {
+  if (window.scrollY > 50) {
     to_top.classList.add("active");
   } else {
     to_top.classList.remove("active");
@@ -180,8 +180,6 @@ async function getData() {
       getJSON(`https://api.adviceslip.com/advice`),
       getJSON(`https://uselessfacts.jsph.pl/api/v2/facts/today`),
     ]);
-    hideloading();
-    OpenCloseModal();
     // console.log(data);
     // console.log(data[0].activity);
     // console.log(data[1].meals[0].strMealThumb);
@@ -193,11 +191,13 @@ async function getData() {
     food_name.innerHTML = data[1].meals[0].strMeal;
     quote_content.innerHTML = data[2].slip.advice;
     fact_content.innerHTML = data[3].text;
+    hideloading();
+    OpenCloseModal();
   } catch (err) {
     console.log(err);
   }
 }
 
-btn.addEventListener("click", function () {
-  getData();
-});
+// btn.addEventListener("click", function () {
+//   getData();
+// });
