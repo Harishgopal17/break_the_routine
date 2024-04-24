@@ -1,4 +1,5 @@
 const btn = document.querySelector(".activity_btn");
+const tryagain_btn = document.querySelector(".tryagain_btn");
 const btn_close = document.querySelector(".btn--close-modal");
 const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
@@ -12,6 +13,7 @@ const activity_generator = document.querySelector(
   ".activity_generator_section"
 );
 const animate_section = document.querySelectorAll(".animate_section");
+const activity_container = document.querySelector(".activity_container");
 const activity_content = document.querySelector(".activity_content");
 const food_image = document.querySelector(".food_image");
 const food_name = document.querySelector(".food_name");
@@ -85,7 +87,7 @@ const how_it_works_observer = new IntersectionObserver(
   },
   {
     root: null,
-    threshold: 0.25,
+    threshold: 0.2,
   }
 );
 
@@ -157,17 +159,26 @@ function hideloading() {
   loading.classList.toggle("loading");
   overlay.classList.toggle("visibility_hidden");
 }
-
+//
 ///////////////////////////////
 ////API
 ///////////////////////////////
+
+let html = `<div class="error_div">
+<h4 class="error_msg">Oops! something went wrong</h4>
+<img src="svg/Error.svg" class="error_svg" alt="Error message" />
+<h4 class="error_msg">Try agani after some time</h4>
+</div>`;
 
 async function getJSON(url) {
   try {
     const res = await fetch(url);
     return await res.json();
-  } catch {
-    renderError("Something went wrong");
+  } catch (err) {
+    console.log(err);
+    activity_container.innerHTML = "";
+    OpenCloseModal();
+    activity_container.insertAdjacentHTML("afterbegin", html);
   }
 }
 
@@ -178,7 +189,7 @@ async function getData() {
       getJSON(`https://www.boredapi.com/api/activity/`),
       getJSON(`https://www.themealdb.com/api/json/v1/1/random.php`),
       getJSON(`https://api.adviceslip.com/advice`),
-      getJSON(`https://uselessfacts.jsph.pl/api/v2/facts/today`),
+      getJSON(`https://uselessfacts.jsph.pl/api/v2/facts/random`),
     ]);
     // console.log(data);
     // console.log(data[0].activity);
@@ -187,17 +198,24 @@ async function getData() {
     // console.log(data[2].slip.advice);
     // console.log(data[3].text);
     activity_content.innerHTML = data[0].activity;
-    food_image.src = data[1].meals[0].strMealThumb;
-    food_name.innerHTML = data[1].meals[0].strMeal;
+    const img = new Image();
+    img.src = data[1].meals[0].strMealThumb;
     quote_content.innerHTML = data[2].slip.advice;
     fact_content.innerHTML = data[3].text;
-    hideloading();
-    OpenCloseModal();
+    img.onload = function () {
+      food_image.src = img.src;
+      food_name.innerHTML = data[1].meals[0].strMeal;
+      hideloading();
+      OpenCloseModal();
+    };
   } catch (err) {
     console.log(err);
+    hideloading();
+    activity_container.innerHTML = "";
+    OpenCloseModal();
+    activity_container.insertAdjacentHTML("afterbegin", html);
   }
 }
-
-// btn.addEventListener("click", function () {
-//   getData();
-// });
+btn.addEventListener("click", function () {
+  getData();
+});
