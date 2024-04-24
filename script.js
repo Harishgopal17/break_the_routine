@@ -270,7 +270,7 @@ async function getResult() {
 async function getData() {
   showloading();
   try {
-    const result = await Promise.race([getResult(), timeout(4)]);
+    const result = await Promise.race([getResult(), timeout(5)]);
 
     if (result === "timeout") {
       console.log("Request timed out");
