@@ -256,7 +256,7 @@ async function getJSON(url) {
 async function getResult() {
   try {
     return await Promise.all([
-      getJSON(`https://www.boredapi.com/api/activity/`),
+      getJSON(`https://bored.api.lewagon.com/api/activity/`),
       getJSON(`https://www.themealdb.com/api/json/v1/1/random.php`),
       getJSON(`https://api.adviceslip.com/advice`),
       getJSON(`https://uselessfacts.jsph.pl/api/v2/facts/random`),
